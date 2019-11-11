@@ -3,7 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
-    <property name="APP_NAME" value="mySpringBootDemo"/>
+    <property name="APP_NAME" value="myAdmin"/>
     <!-- 日志路径 -->
     <property name="LOG_HOME_PATH" value="/home/logback/${APP_NAME}"/>
     <!-- 本地日志路径 -->
@@ -39,6 +39,10 @@
 
     <!-- 开发环境 -->
     <springProfile name="dev">
+
+        <!-- 输出 sql 语句 -->
+        <logger name="top.liyf.admin.mapper" level="DEBUG"/>
+
         <root level="INFO">
             <appender-ref ref="CONSOLE" />
             <appender-ref ref="file_local" />
