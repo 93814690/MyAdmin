@@ -12,7 +12,7 @@ public enum ResultCode {
 
 
     /** 未知的错误 */
-    UNKNOWN_ERROR(500, "未知错误");
+    UNKNOWN_ERROR(999, "未知错误");
 
     ResultCode(int value, String msg){
         this.val = value;
