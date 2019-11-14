@@ -1,5 +1,7 @@
 package top.liyf.admin.exception;
 
+import lombok.Getter;
+import lombok.Setter;
 import top.liyf.admin.result.ResultCode;
 
 import java.io.Serializable;
@@ -8,6 +10,8 @@ import java.io.Serializable;
  * @author liyf
  * Created in 2019-11-13
  */
+@Getter
+@Setter
 public class BusinessException extends RuntimeException implements Serializable {
 
     private static final long serialVersionUID = 1L;

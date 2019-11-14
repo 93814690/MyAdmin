@@ -3,9 +3,10 @@ package top.liyf.admin.security.service;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import top.liyf.admin.domain.User;
+import top.liyf.admin.exception.BusinessException;
+import top.liyf.admin.result.ResultCode;
 import top.liyf.admin.security.domain.MyUserDetails;
 import top.liyf.admin.service.PermissionService;
 import top.liyf.admin.service.UserService;
@@ -24,10 +25,10 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
         User user = userService.findByName(username);
         if (user == null) {
-            throw new UsernameNotFoundException("sss");
+            throw new BusinessException(ResultCode.USER_NOT_FOUND);
         }
         MyUserDetails userDetails = new MyUserDetails(user);
         Collection<GrantedAuthority> grantedAuthority = permissionService.getGrantedAuthorityByUid(user.getUid());
