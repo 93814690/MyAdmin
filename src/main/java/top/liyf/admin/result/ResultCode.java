@@ -9,10 +9,14 @@ public enum ResultCode {
     /** 请求成功 */
     SUCCESS(0, "成功"),
 
+    USER_NOT_FOUND(100, "用户不存在"),
 
+    WRONG_PASSWORD(101, "用户名或密码错误"),
+
+    DEACTIVATED_ACCOUNT(102,"账号已停用"),
 
     /** 未知的错误 */
-    UNKNOWN_ERROR(999, "未知错误");
+    UNKNOWN_ERROR(999, "未知异常，请联系管理员");
 
     ResultCode(int value, String msg){
         this.val = value;
