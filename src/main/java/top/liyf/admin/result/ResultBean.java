@@ -1,6 +1,7 @@
 package top.liyf.admin.result;
 
 import lombok.Data;
+import top.liyf.admin.exception.BusinessException;
 
 import java.io.Serializable;
 
@@ -29,5 +30,10 @@ public class ResultBean<T> implements Serializable {
     public ResultBean(ResultCode code) {
         this.code = code.val();
         this.msg = code.msg();
+    }
+
+    public ResultBean(BusinessException e) {
+        this.code = e.getCode();
+        this.msg = e.getMsg();
     }
 }
